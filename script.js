@@ -38,15 +38,6 @@ console.log(b)
    songs.innerHTML = ""
    for (let i = 0; i < as.length; i++) {
       if (as[i].innerHTML.endsWith(".mp3")) {
-         // console.log(as[i].innerHTML.replaceAll("320", "").split("-")[1])
-
-
-         // let div = document.createElement("div")
-         // div.innerHTML =  ` <span id="songcard" class="songcard">
-         //         ${as[i].innerHTML.replaceAll("320", "").split("-")[1]}
-         //       </span>`
-         //       songs.append(div)
-
          songs.innerHTML = songs.innerHTML + ` <span id="songcard" class="songcard">
        ${as[i].innerHTML.replaceAll("320", "").split("-")[1]}
      </span>`
@@ -66,7 +57,7 @@ console.log(b)
       }
    }
 
-
+   // ------------------addEventListener to play a current song cards----------------
    let d = document.getElementById("songs").getElementsByTagName("span")
 
    for (let i = 0; i < d.length; i++) {
@@ -91,6 +82,7 @@ console.log(b)
 
 
 }
+// -----to dispaly the albums dynamically on the screen
 async function displayAlbum() {
    let Bunch_of_cards = document.querySelector(".Bunch_of_cards")
    let a = await fetch(`http://127.0.0.1:3000/song`)
@@ -136,7 +128,7 @@ async function displayAlbum() {
    }
 
 
-
+  // --------addEventListener for click on the card-------
    Array.from(document.getElementsByClassName("card")).forEach(async e => {
       e.addEventListener("click", async item => {
          //  file =   item.currentTarget.dataset.folder
@@ -159,7 +151,6 @@ async function main() {
 
 
    await playmusic(`song/animalsongs`)
-   // ------------------addEventListener to play a current song cards----------------
 
    displayAlbum()
 
@@ -169,7 +160,7 @@ async function main() {
 
    document.getElementById("curr_time").innerHTML = `${secondsToMinuteSecond(current_song.currentTime)}/${secondsToMinuteSecond(current_song.duration)}`
    document.getElementById("curr_onseekbar").innerHTML = await song[0].replaceAll("320", "").replaceAll("%20", " ").split("-")[1]
-   // console.log(song[0].replaceAll("320", "").replaceAll("%20", " ").split("-"))
+   
 
    // ------------------addevent listner to play button--------------
    play.addEventListener("click", (e) => {
@@ -340,7 +331,7 @@ async function main() {
 
    })
 
-   // --------addEventListener for click on the card-------
+ 
 
 
 
